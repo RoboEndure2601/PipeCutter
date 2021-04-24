@@ -1,8 +1,5 @@
 #pragma once
 
-//#ifndef pin_h_
-//#define pin_h_
-
 #include "STTechBoard.h"
 
 void pinModes()
@@ -13,7 +10,3 @@ void pinModes()
     pinMode(ENCODER_PHASE_A_PIN,INPUT);
     pinMode(ENCODER_PHASE_B_PIN,INPUT);
 }
-
-//#endif
-
-#pragma endregion

@@ -1,11 +1,5 @@
-//#pragma
+#pragma once
 
-#ifndef Configuration_h_
-#define Configuration_h_
+// using in full version 
 
 //#define BOARD_NAME 
-
-
-#endif
-
-//#pragma endregion
