@@ -6,4 +6,4 @@ or any retailer you want.
 
 ## We mention Nextion Display Code Here:
 
-https://github.com/parth910/PipeCutter/NextionDisplay/
+https://github.com/parth9109/PipeCutter/tree/main/NextionDisplay
