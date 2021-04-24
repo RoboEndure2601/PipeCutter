@@ -1,4 +1,4 @@
 # PipeCutter
 
 ## Buy me Coffee
-### Pay On PayPal : paypal.me/psthesiya
+### Pay On PayPal : https://www.paypal.com/paypalme/psthesiya
