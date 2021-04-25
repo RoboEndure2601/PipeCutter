@@ -12,8 +12,8 @@
 
 #define BOARD_INFO_NAME "ST_TECH 1"
 
-#define SERVO_STEP_PIN                           36
-#define SERVO_DIR_PIN                            34
+#define SERVO_STEP_PIN                           5
+#define SERVO_DIR_PIN                            6
 
 #define ENCODER_PHASE_A_PIN                      2
 #define ENCODER_PHASE_B_PIN                      3

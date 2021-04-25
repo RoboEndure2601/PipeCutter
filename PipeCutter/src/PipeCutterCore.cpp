@@ -4,6 +4,7 @@
 #include "board/pin.h"
 #include "board/STTechBoard.h"
 #include "encoder/encoder.h"
+#include "MotorControl/PanasonicServoA4Mines.h"
 
 void updateEncoder();
 
@@ -24,13 +25,16 @@ void setup()
   Serial1.begin(115200);
 
   pinModes();
+  PanasonicA4mines_setup();
   attachInterrupt(digitalPinToInterrupt(ENCODER_PHASE_A_PIN), checkPosition, CHANGE);
   attachInterrupt(digitalPinToInterrupt(ENCODER_PHASE_B_PIN), checkPosition, CHANGE);
+
+  //motor test
+  defaultSetting();
 }
 
 void loop() 
 {
-
   EncoderPosition();// this function give us position of encoder at time
 
   NextionIDLE();
