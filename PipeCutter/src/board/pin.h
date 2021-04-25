@@ -9,4 +9,7 @@ void pinModes()
 
     pinMode(ENCODER_PHASE_A_PIN,INPUT);
     pinMode(ENCODER_PHASE_B_PIN,INPUT);
+
+    digitalWrite(ENCODER_PHASE_A_PIN,HIGH);
+    digitalWrite(ENCODER_PHASE_B_PIN,HIGH);
 }

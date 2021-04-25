@@ -1,20 +1,48 @@
 #pragma once
 
+#include "src/board/STTechBoard.h"
+#include "RotaryEncoder/src/RotaryEncoder.h"
+
+// upcoming Version with private library for encoder
+/*
 class encoder
 {
 private:
-    volatile int lastEncoded = 0;
-    volatile long encoderValue = 0;
 
-    long lastencoderValue = 0;
-
-    int lastMSB = 0;
-    int lastLSB = 0;
-
-    int encoderPin1;
-    int encoderPin2;
+protected:
     
 public:
-    encoder(int _encoderPin1 , int _encoderPin2);
-    void updateEncoder(/* args */);
 };
+*/
+
+//RotaryEncoder Library Depened
+RotaryEncoder Encoder(ENCODER_PHASE_A_PIN, ENCODER_PHASE_B_PIN, RotaryEncoder::LatchMode::TWO03);
+
+static int pos = 0;
+
+void checkPosition()
+{
+    Encoder.tick();
+}
+
+void EncoderPosition()
+{
+    int newPos = Encoder.getPosition();
+    if (pos != newPos) {
+        Serial.print("pos:");
+        Serial.print(newPos);
+        Serial.print(" dir:");
+        Serial.println((int)(Encoder.getDirection()));
+        pos = newPos;
+    } // if
+}
+
+/* 
+    In this Function we gone count encoder position 
+    current position = Zero
+    last position    = Given 
+*/
+void CountPosition()
+{
+
+}
