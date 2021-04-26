@@ -2,32 +2,42 @@
 #include "PipeCutterCore.h"
 #include "Display/display.h"
 #include "board/pin.h"
-#include "board/STTechBoard.h"
+//#include "board/STTechBoard.h"
 #include "encoder/encoder.h"
 #include "MotorControl/PanasonicServoA4Mines.h"
-
-void updateEncoder();
 
 void setup() 
 {
   // put your setup code here, to run once:
 
+  // Nextion Display intrrupt call setting defined in this function
+  // If you dont want to use Nextion Display then just comment this line
+  nexInit();
   PushCallPopCall();
 
   // use for serial debug connection or pc based connetion
-  Serial.begin(115200);
+  // If don't need serial data output on your device just 
+  //comment this line
+  //Serial.begin(115200);
 
   // use for Nextion Display connection
-  
-  Serial1.begin(9600);
-  Serial1.print("baud = 115200");
-  Serial1.end();
-  Serial1.begin(115200);
+  // If you dont want to use Nextion Display then just comment this line
+  //Serial.begin(9600);
+  //Serial.print("baud = 115200");
+  //Serial.end();
+  Serial.begin(115200);
 
   pinModes();
+
+  // If you use custom motor setting then just change in funtion 
+  // define that motor function here
+  // and comment this line 
   PanasonicA4mines_setup();
-  attachInterrupt(digitalPinToInterrupt(ENCODER_PHASE_A_PIN), checkPosition, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(ENCODER_PHASE_B_PIN), checkPosition, CHANGE);
+
+  // intrrupt for encoder input 
+  // this line included in PanasonicA4mines_setup() check there for changes
+  //attachInterrupt(digitalPinToInterrupt(ENCODER_PHASE_A_PIN), checkPosition, CHANGE);
+  //attachInterrupt(digitalPinToInterrupt(ENCODER_PHASE_B_PIN), checkPosition, CHANGE);
 
   //motor test
   defaultSetting();
@@ -35,7 +45,10 @@ void setup()
 
 void loop() 
 {
+  // we going to use intrrupt in next version 
+  // wait until or modify by your self
   EncoderPosition();// this function give us position of encoder at time
 
+  // taking action based on Nextion Display Input for Arduino or MCU
   NextionIDLE();
 }

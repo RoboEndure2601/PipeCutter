@@ -47,69 +47,161 @@ boolean noQtyPage = false; //pageNumber = 15;
 */
 
 //variables of ManualPage
-NexButton waterRelay = NexButton(3, 8, "waterR");
-NexButton oilRelay = NexButton(3, 9, "oilR");
-NexButton batterRelay = NexButton(3, 10, "batterR");
-NexDSButton sprederRelay = NexDSButton(3, 12, "sprederR");
-NexButton stepper = NexButton(3, 11, "Stepper");
-NexDSButton spindleSpeed = NexDSButton(3, 13, "SSpeed");
-NexButton tempareture = NexButton(3, 14, "tempOutput");
-NexNumber tempSetPoint = NexNumber(3, 16, "setPoint");
-NexNumber manualTemp = NexNumber(3, 6, "temp");
+NexNumber runValue = NexNumber(1, 7, "runValue");
+
+NexButton forward = NexButton(1, 1, "forward");
+NexButton backward = NexButton(1, 2, "backward");
+
+NexDSButton feet = NexDSButton(1, 6, "feet");
+NexDSButton inch = NexDSButton(1, 5, "inch");
+NexDSButton mm = NexDSButton(1, 4, "mm");
 
 NexTouch *nex_listen_list[] =
 {
+  &runValue,
+  &feet,
+  &inch,
+  &mm,
+  &forward,
+  &backward,
   NULL  // String terminated
 };  // End of touch event list
 
-//save setting for esch type of paper
-void softSavePopCallback(void *ptr)//for release
-{
-    String save = Serial.readString();
-}
-
-const int SWITCH_ON = 1;
-const int SWITCH_OFF = 0;
-
-byte received_data[1];
-int  switch_pos;
-int spindle_switch_pos;
-
-// for spreder relay duoble state button
-void sprederRelayPopCallback(void *ptr)//for release
-{
-    
-    int size = Serial.readBytesUntil('\n', received_data, 1);
-  // First Byte has the switch position data
-  switch_pos = received_data[0];
-  if (switch_pos == SWITCH_ON) 
-  {
-  } else if (switch_pos == SWITCH_OFF) 
-  {
-  }
-}
-
-// for spinlde speed relay dual state button
-void spindleSpeedPopCallback(void *ptr)//for release
-{
-    int size = Serial.readBytesUntil('\n', received_data, 1);
-  // First Byte has the switch position data
-  spindle_switch_pos = received_data[0];
-  if (spindle_switch_pos == SWITCH_ON)
-   {
-    //digitalWrite(SpindleSpeedRelay,HIGH);
-  } else if (spindle_switch_pos == SWITCH_OFF)
-   {
-    //digitalWrite(SpindleSpeedRelay,LOW);
-  }
-}
-
-void PushCallPopCall()
-{
-  spindleSpeed.attachPop(spindleSpeedPopCallback);
-}
 
 void NextionIDLE()
 {
     nexLoop(nex_listen_list);
+}
+
+void runValuePopCallback(void *ptr)//for release
+{
+  nexSerial.println("runValuePopCallback");
+  runValue.setValue(150);
+}
+
+void forwardPopCallback(void *ptr)//for release
+{
+  uint32_t number;
+    
+  nexSerial.println("runValuePopCallback");
+
+  runValue.getValue(&number);
+    
+  number += 1;
+    
+  runValue.setValue(number);
+}
+
+void backwardPopCallback(void *ptr)//for release
+{
+}
+
+
+// dual state button custom code because
+// I not able to use directly from Nextion Diaply Library
+
+const boolean SWITCH_ON = 1;
+const boolean SWITCH_OFF = 0;
+
+byte received_data[1];
+int  switch_pos;
+boolean feet_state = 0;
+boolean inch_state = 0;
+boolean mm_state = 0;
+
+void feetPopCallback(void *ptr)//for release
+{
+  int size = Serial.readBytesUntil('\n', received_data, 1);
+  // First Byte has the switch position data
+  feet_state = received_data[0];
+  if (feet_state == SWITCH_ON)
+  {
+  } 
+  else if (feet_state == SWITCH_OFF)
+  {
+  }
+}
+// void feetPushCallback(void *ptr)//for release
+// {
+//   int size = Serial.readBytesUntil('\n', received_data, 1);
+//   // First Byte has the switch position data
+//   feet_state = received_data[0];
+//   if (feet_state == SWITCH_ON)
+//    {
+//     //digitalWrite(SpindleSpeedRelay,HIGH);
+//   } else if (feet_state == SWITCH_OFF)
+//    {
+//     //digitalWrite(SpindleSpeedRelay,LOW);
+//   }
+// }
+
+void inchPopCallback(void *ptr)//for release
+{
+  int size = Serial.readBytesUntil('\n', received_data, 1);
+  // First Byte has the switch position data
+  inch_state = received_data[0];
+  if (inch_state == SWITCH_ON)
+  {
+  }
+  else if (inch_state == SWITCH_OFF)
+  {
+  }
+}
+// void inchPushCallback(void *ptr)//for release
+// {
+//   int size = Serial.readBytesUntil('\n', received_data, 1);
+//   // First Byte has the switch position data
+//   feet_state = received_data[0];
+//   if (feet_state == SWITCH_ON)
+//    {
+//     //digitalWrite(SpindleSpeedRelay,HIGH);
+//   } else if (feet_state == SWITCH_OFF)
+//    {
+//     //digitalWrite(SpindleSpeedRelay,LOW);
+//   }
+// }
+
+void mmPopCallback(void *ptr)//for release
+{
+  int size = Serial.readBytesUntil('\n', received_data, 1);
+  // First Byte has the switch position data
+  mm_state = received_data[0];
+  if (mm_state == SWITCH_ON)
+  {
+  }
+  else if (mm_state == SWITCH_OFF)
+  {
+  }
+}
+// void mmPushCallback(void *ptr)//for release
+// {
+//   int size = Serial.readBytesUntil('\n', received_data, 1);
+//   // First Byte has the switch position data
+//   feet_state = received_data[0];
+//   if (feet_state == SWITCH_ON)
+//    {
+//     //digitalWrite(SpindleSpeedRelay,HIGH);
+//   } else if (feet_state == SWITCH_OFF)
+//    {
+//     //digitalWrite(SpindleSpeedRelay,LOW);
+//   }
+// }
+
+
+
+void PushCallPopCall()
+{
+  runValue.attachPop(runValuePopCallback);
+
+  forward.attachPop(forwardPopCallback);
+  backward.attachPop(backwardPopCallback);
+
+  feet.attachPop(feetPopCallback);
+  //feet.attachPush(feetPushCallback);
+  
+  inch.attachPop(inchPopCallback);
+  //inch.attachPush(inchPushCallback);
+  
+  mm.attachPop(mmPopCallback);
+  //mm.attachPush(mmPushCallback);
 }
