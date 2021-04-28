@@ -1,22 +1,28 @@
 #pragma once
 
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(115200);
-  Serial1.begin(9600);
-}
+#include <Arduino.h>
+#include "src/MotorControl/PanasonicServoA4Mines.h"
+
+boolean feet_state = 0;
+boolean inch_state = 0;
+boolean mm_state = 0;
 
 String incoming;
 String oneSubString;
 String toint_conv;
+
 int value;
 float values;
 float mm = 0.00;
 int mode = 0;
 
-bool clear = false;
+ float feetToMm = 304.8;  // mm
+ float inchToMm = 25.4;   // mm
+ float mmToMm   = 1;      // mm
+ int itof_cov   = 10;
 
-void loop() {
+void Serial_loop() 
+{
   // put your main code here, to run repeatedly:
   if (Serial1.available() > 0)
   {
@@ -96,6 +102,8 @@ void loop() {
         toint_conv = oneSubString.substring(4);
         value = toint_conv.toInt();
         values = value;
+
+        digitalWrite(SERVO_DIR_PIN,HIGH);
       }
       else if (oneSubString.substring(0, 5) == "back1")
       {
@@ -117,22 +125,27 @@ void loop() {
         toint_conv = oneSubString.substring(5);
         value = toint_conv.toInt();
         values = value;
+
+        digitalWrite(SERVO_DIR_PIN,LOW);
       }
 
-
-
-      if (mode == 1) {
-        mm = values * 304.80 / 10.00;
+      if (mode == 1) 
+      {
+        mm = values * feetToMm / itof_cov;
       }
-      else if (mode == 2) {
-        mm = values * 25.40 / 10.00;
+      else if (mode == 2) 
+      {
+        mm = values * inchToMm / itof_cov;
       }
-      else if (mode == 3) {
-        mm = values / 10.00;
+      else if (mode == 3) 
+      {
+        mm = values * mmToMm   / itof_cov;
       }
 
       Serial.print("move in mm = ");
       Serial.println(mm);
+
+      MoveToPosition(mm);
 
       Serial1.print("forward.val=0");
       Serial1.write(0xff);
@@ -153,26 +166,5 @@ void loop() {
 
       //clear = true;
     }
-  }
-  if (clear == true)
-  {
-    //clear string for new incoming data
-    for (int i = 0; incoming.length(); i++)
-    {
-      incoming[i] = NULL;
-    }
-    for (int i = 0; oneSubString.length(); i++)
-    {
-      oneSubString[i] = NULL;
-    }
-    for (int i = 0; toint_conv.length(); i++)
-    {
-      toint_conv[i] = NULL;
-    }
-    value = 0;
-    values = 0;
-    mm = 0;
-
-    clear = false;
   }
 }

@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "PipeCutterCore.h"
-#include "Display/display.h"
+#include "Display/displayCustom.h"
 #include "board/pin.h"
 //#include "board/STTechBoard.h"
 #include "encoder/encoder.h"
@@ -12,8 +12,8 @@ void setup()
 
   // Nextion Display intrrupt call setting defined in this function
   // If you dont want to use Nextion Display then just comment this line
-  nexInit();
-  PushCallPopCall();
+  //nexInit();
+  //PushCallPopCall();
 
   // use for serial debug connection or pc based connetion
   // If don't need serial data output on your device just 
@@ -22,10 +22,10 @@ void setup()
 
   // use for Nextion Display connection
   // If you dont want to use Nextion Display then just comment this line
-  //Serial.begin(9600);
+  Serial.begin(115200);
   //Serial.print("baud = 115200");
   //Serial.end();
-  Serial.begin(115200);
+  Serial1.begin(9600);
 
   pinModes();
 
@@ -47,8 +47,11 @@ void loop()
 {
   // we going to use intrrupt in next version 
   // wait until or modify by your self
-  EncoderPosition();// this function give us position of encoder at time
+  //EncoderPosition();// this function give us position of encoder at time
 
   // taking action based on Nextion Display Input for Arduino or MCU
-  NextionIDLE();
+  //NextionIDLE();
+
+  // when any command given then it's one work
+  Serial_loop();
 }
