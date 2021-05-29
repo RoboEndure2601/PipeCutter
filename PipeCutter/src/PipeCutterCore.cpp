@@ -3,8 +3,13 @@
 #include "Display/displayCustom.h"
 #include "board/pin.h"
 //#include "board/STTechBoard.h"
-#include "encoder/encoder.h"
+#include "src/MotorControl/encoder/encoder.h"
 #include "MotorControl/PanasonicServoA4Mines.h"
+#include "src/MotorControl/ClosedLoopStepper/ClosedLoopStepper.h"
+#include "src/MotorControl/ClosedLoopStepper/StepperSpeedControler.h"
+
+
+ClosedLoopStepper cls;
 
 void setup() 
 {
@@ -40,7 +45,7 @@ void setup()
   //attachInterrupt(digitalPinToInterrupt(ENCODER_PHASE_B_PIN), checkPosition, CHANGE);
 
   //motor test
-  defaultSetting();
+  //defaultSetting();
 }
 
 void loop() 
