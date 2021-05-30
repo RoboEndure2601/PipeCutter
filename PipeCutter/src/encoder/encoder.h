@@ -18,25 +18,22 @@ public:
 //RotaryEncoder Library Depened
 RotaryEncoder Encoder(ENCODER_PHASE_A_PIN, ENCODER_PHASE_B_PIN, RotaryEncoder::LatchMode::TWO03);
 
+static int pos = 0;
+
 void checkPosition()
 {
     Encoder.tick();
 }
 
-double pos;
-
-double EncoderPosition()
+void EncoderPosition()
 {
-    double newPos = Encoder.getPosition();
+    int newPos = Encoder.getPosition();
     if (pos != newPos) {
         Serial.print("pos:");
         Serial.print(newPos);
-        //Serial.print(" dir:");
-        //Serial.println((int)(Encoder.getDirection()));
+        Serial.print(" dir:");
+        Serial.println((int)(Encoder.getDirection()));
         pos = newPos;
-        //Serial.print("EncoderPosition = ");
-        //Serial.println(pos);
-        //return pos;
     } // if
 }
 

@@ -3,6 +3,7 @@
 #include "Display/displayCustom.h"
 #include "board/pin.h"
 //#include "board/STTechBoard.h"
+<<<<<<< HEAD
 //#include "src/MotorControl/encoder/encoder.h"
 //#include "src/MotorControl/PanasonicServoA4Mines.h"
 //#include "src/MotorControl/ClosedLoopStepper/ClosedLoopStepper.h"
@@ -10,6 +11,10 @@
 
 
 //ClosedLoopStepper cls;
+=======
+#include "encoder/encoder.h"
+#include "MotorControl/PanasonicServoA4Mines.h"
+>>>>>>> parent of e25de51 (upcoming version)
 
 void setup() 
 {
@@ -45,7 +50,7 @@ void setup()
   //attachInterrupt(digitalPinToInterrupt(ENCODER_PHASE_B_PIN), checkPosition, CHANGE);
 
   //motor test
-  //defaultSetting();
+  defaultSetting();
 }
 
 void loop() 

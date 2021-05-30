@@ -1,16 +1,15 @@
 #pragma once
 
 #include "src/board/STTechBoard.h"
-#include "src/MotorControl/encoder/encoder.h"
+#include "src/encoder/encoder.h"
 #include "SpeedyStepper/src/SpeedyStepper.h"
 #include "Configuration.h"
 
 SpeedyStepper PanasonicA4mines;
 
 //define variable for Panasonic A4 mines motor control
- float PPR_value = 30.47; // This value set in Panasonic A4 Series Servo drive
+ float PPR_value = 30.62; // This value set in Panasonic A4 Series Servo drive
  int speed = 100;
- int Encoder_PPR = 400;
 
 /*
  //upcoming version support Accelaretion and Deaccelaretion for more power and accuray

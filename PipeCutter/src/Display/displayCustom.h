@@ -145,7 +145,6 @@ void Serial_loop()
       Serial.print("move in mm = ");
       Serial.println(mm);
 
-      // moving motor acording to input data
       MoveToPosition(mm);
 
       Serial1.print("forward.val=0");
