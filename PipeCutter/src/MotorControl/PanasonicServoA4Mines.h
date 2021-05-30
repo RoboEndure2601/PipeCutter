@@ -38,7 +38,7 @@ void defaultSetting()
 {
     //PanasonicA4mines.setStepsPerMillimeter(4000);
 }
-/*
+
 void MoveToPosition(float moving_mm)
 {
     //PanasonicA4mines.setSpeedInStepsPerSecond(4000);
@@ -47,14 +47,14 @@ void MoveToPosition(float moving_mm)
     //PanasonicA4mines.moveRelativeInSteps(move);
 
     // defualt setting for panasonic servo motor drive
-    PanasonicA4mines.setStepsPerMillimeter(52.49);
-    PanasonicA4mines.setSpeedInMillimetersPerSecond(100);
-    PanasonicA4mines.setAccelerationInMillimetersPerSecondPerSecond(200);
+    PanasonicA4mines.setStepsPerMillimeter(PPR_value);
+    PanasonicA4mines.setSpeedInMillimetersPerSecond(300);
+    PanasonicA4mines.setAccelerationInMillimetersPerSecondPerSecond(30);
 
     PanasonicA4mines.moveToPositionInMillimeters(moving_mm);
 }
-*/
 
+/*
 void MoveToPosition(float moving_mm)
 {
     unsigned long mmToMove = moving_mm * PPR_value;
@@ -67,3 +67,4 @@ void MoveToPosition(float moving_mm)
         delayMicroseconds(100);
     }
 }
+*/
