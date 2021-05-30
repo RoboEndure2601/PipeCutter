@@ -4,7 +4,7 @@
 #include "board/pin.h"
 //#include "board/STTechBoard.h"
 #include "src/MotorControl/encoder/encoder.h"
-#include "MotorControl/PanasonicServoA4Mines.h"
+#include "src/MotorControl/PanasonicServoA4Mines.h"
 #include "src/MotorControl/ClosedLoopStepper/ClosedLoopStepper.h"
 #include "src/MotorControl/ClosedLoopStepper/StepperSpeedControler.h"
 
