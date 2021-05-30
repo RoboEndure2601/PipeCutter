@@ -3,13 +3,13 @@
 #include "Display/displayCustom.h"
 #include "board/pin.h"
 //#include "board/STTechBoard.h"
-#include "src/MotorControl/encoder/encoder.h"
-#include "src/MotorControl/PanasonicServoA4Mines.h"
-#include "src/MotorControl/ClosedLoopStepper/ClosedLoopStepper.h"
-#include "src/MotorControl/ClosedLoopStepper/StepperSpeedControler.h"
+//#include "src/MotorControl/encoder/encoder.h"
+//#include "src/MotorControl/PanasonicServoA4Mines.h"
+//#include "src/MotorControl/ClosedLoopStepper/ClosedLoopStepper.h"
+//#include "src/MotorControl/ClosedLoopStepper/StepperSpeedControler.h"
 
 
-ClosedLoopStepper cls;
+//ClosedLoopStepper cls;
 
 void setup() 
 {

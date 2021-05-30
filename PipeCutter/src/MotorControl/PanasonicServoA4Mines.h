@@ -12,6 +12,7 @@ SpeedyStepper PanasonicA4mines;
  int speed = 100;
  int Encoder_PPR = 400;
 
+/*
  //upcoming version support Accelaretion and Deaccelaretion for more power and accuray
 void Accel()
 {
@@ -22,6 +23,7 @@ void Deaccel()
 {
 
 }
+*/
 
 void PanasonicA4mines_setup()
 {

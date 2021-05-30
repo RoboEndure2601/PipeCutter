@@ -1,4 +1,4 @@
-#pragma
+#pragma once
 
 #include "src/MotorControl/PanasonicServoA4Mines.h"
 #include "src/MotorControl/ClosedLoopStepper/ClosedLoopStepper.h"

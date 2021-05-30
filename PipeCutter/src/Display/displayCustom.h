@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
-#include "src/MotorControl/PanasonicServoA4Mines.h"
+#include "src/board/STTechBoard.h"
 
 boolean feet_state = 0;
 boolean inch_state = 0;
