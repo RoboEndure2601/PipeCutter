@@ -1,10 +1,10 @@
-//#pragma once
+#pragma once
 
 
-#ifndef pin_h_
-#define pin_h_
+//#ifndef pin_h_
+//#define pin_h_
 
-#include "src/Display/board.h"
+#include "src/board/board.h"
 
 void pinModes()
 {
@@ -21,4 +21,4 @@ void pinModes()
     digitalWrite(SERVO_DIR_PIN,HIGH);
 }
 
-#endif
+//#endif

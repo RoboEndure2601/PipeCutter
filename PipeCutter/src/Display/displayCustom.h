@@ -1,10 +1,11 @@
 //#pragma once
 
-#ifndef displayCustom_h_
-#define displayCustom_h_
+//#ifndef displayCustom_h_
+//#define displayCustom_h_
 
-#include <Arduino.h>
-#include "board.h"
+//#include <Arduino.h>
+#include "src/board/board.h"
+#include "src/MotorControl/PanasonicServoA4Mines.h"
 
 boolean feet_state = 0;
 boolean inch_state = 0;
@@ -172,4 +173,4 @@ void Serial_loop()
   }
 }
 
-#endif
+//#endif
