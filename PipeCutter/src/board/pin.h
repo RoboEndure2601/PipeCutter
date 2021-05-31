@@ -1,6 +1,10 @@
-#pragma once
+//#pragma once
 
-#include "STTechBoard.h"
+
+#ifndef pin_h_
+#define pin_h_
+
+#include "src/Display/board.h"
 
 void pinModes()
 {
@@ -16,3 +20,5 @@ void pinModes()
     
     digitalWrite(SERVO_DIR_PIN,HIGH);
 }
+
+#endif

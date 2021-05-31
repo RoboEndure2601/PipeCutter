@@ -1,4 +1,7 @@
-#pragma once
+//#pragma once
+
+#ifndef board_h_
+#define board_h_
 
 //#include "Configuration.h"
 
@@ -10,7 +13,7 @@
 #endif
 */
 
-#define BOARD_INFO_NAME "ST_TECH 1"
+//#define BOARD_INFO_NAME "ST_TECH 1"
 
 #define SERVO_STEP_PIN                           5
 #define SERVO_DIR_PIN                            6
@@ -20,3 +23,5 @@
 
 #define NEXTION_DISPLAY_RX_PIN                   19
 #define NEXTION_DISPLAY_TX_PIN                   18
+
+#endif

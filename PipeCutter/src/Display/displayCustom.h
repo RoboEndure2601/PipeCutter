@@ -1,7 +1,10 @@
-#pragma once
+//#pragma once
+
+#ifndef displayCustom_h_
+#define displayCustom_h_
 
 #include <Arduino.h>
-#include "src/board/STTechBoard.h"
+#include "board.h"
 
 boolean feet_state = 0;
 boolean inch_state = 0;
@@ -168,3 +171,5 @@ void Serial_loop()
     }
   }
 }
+
+#endif

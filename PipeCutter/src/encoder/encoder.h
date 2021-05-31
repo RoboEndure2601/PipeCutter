@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/board/STTechBoard.h"
+//#include "src/board/STTechBoard.h"
 #include "RotaryEncoder/src/RotaryEncoder.h"
 
 // upcoming Version with private library for encoder

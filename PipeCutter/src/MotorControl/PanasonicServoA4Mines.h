@@ -1,9 +1,9 @@
 #pragma once
 
-#include "src/board/STTechBoard.h"
-#include "src/encoder/encoder.h"
+//#include "src/board/STTechBoard.h"
+//#include "src/encoder/encoder.h"
 #include "SpeedyStepper/src/SpeedyStepper.h"
-#include "Configuration.h"
+//#include "Configuration.h"
 
 SpeedyStepper PanasonicA4mines;
 

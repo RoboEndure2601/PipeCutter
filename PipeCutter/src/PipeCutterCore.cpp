@@ -2,24 +2,13 @@
 #include "PipeCutterCore.h"
 #include "Display/displayCustom.h"
 #include "board/pin.h"
-//#include "board/STTechBoard.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-//#include "src/MotorControl/encoder/encoder.h"
-//#include "src/MotorControl/PanasonicServoA4Mines.h"
+#include "board/STTechBoard.h"
+#include "MotorControl/encoder/encoder.h"
+#include "MotorControl/PanasonicServoA4Mines.h"
 //#include "src/MotorControl/ClosedLoopStepper/ClosedLoopStepper.h"
 //#include "src/MotorControl/ClosedLoopStepper/StepperSpeedControler.h"
 
-
 //ClosedLoopStepper cls;
-=======
-#include "encoder/encoder.h"
-#include "MotorControl/PanasonicServoA4Mines.h"
->>>>>>> parent of e25de51 (upcoming version)
-=======
-#include "encoder/encoder.h"
-#include "MotorControl/PanasonicServoA4Mines.h"
->>>>>>> parent of e25de51 (upcoming version)
 
 void setup() 
 {
